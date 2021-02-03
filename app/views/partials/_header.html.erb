@@ -1,8 +1,26 @@
-<header class="bg-red-100">
-    <div class="flex justify-center py-4">
-        <h1 class="text-4xl text-blue-900 font-black">
-            Stimulus Wine Club
-        </h1>
+<header class="bg-indigo-100">
+    <div class="flex justify-between items-center py-4">
+        <p class="text-4xl text-blue-900 font-black">
+           <%= link_to "Stimulus Wine Club", root_path %>
+        </p>
+        <ul class="flex">
+        <% if user_signed_in? %>
+        <li class="px-2">
+            <%= current_user.username %>
+        </li>
+        <li class="px-2">
+            <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+        </li>
+        <% else %>
+        <li class="px-2">
+            <%= link_to "Sign Up", '/users/sign_up' %>
+        </li>
+        <li class="px-2">
+            <%= link_to "Log In", '/users/sign_in' %>
+        </li>
+        <%end%>
+        </ul>
+
     </div>
 
 </header>

@@ -10,15 +10,20 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
 </head>
+
+
+<%# Render Dashboard page if user in the sessions %>
+
+<%# Render Landing page if no user in the sessions %>
 
 <body>
     <%= render partial: 'partials/header' %>
+    <%= render partial: 'partials/flash' %>
     <div class="flex">
-        <% if @user%>
-        <%= render partial: 'partials/side_bar' %>
-        <% end %>
-        <main class="m-8">
+
+        <main class="flex items-center justify-center m-8  w-screen">
             <%= yield %>
         </main>
     </div>
