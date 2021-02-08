@@ -1,0 +1,12 @@
+development:
+  cloud_name: dilldog-industries
+  api_key: "296673862282325"
+  api_secret: zTyjKv9GY5-2mwMGYyfgIjf_wmQ
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dilldog-industries
+  api_key: "296673862282325"
+  api_secret: zTyjKv9GY5-2mwMGYyfgIjf_wmQ
+  enhance_image_tag: true
+  static_file_support: true
