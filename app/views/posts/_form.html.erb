@@ -1,38 +1,45 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
+<div class="">
+    <%= form_with(model: post) do |form| %>
+    <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
         <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <%= error.full_message %>
         <% end %>
-      </ul>
+
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <div class="field mb-4">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "border p-2" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
+    <div class="field mb-4">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "border p-2 h-24" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
+    <div class="field mb-4">
+        <%= form.label :price %>
+        <%= form.number_field :price, class: "border p-2" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.hidden_field :image_cache %>
-    <%= form.file_field :image %>
-  </div>
+    <div class="field mb-4">
+        <%= form.label :image %>
+        <%= form.hidden_field :image_cache %>
+        <%= form.file_field :image %>
+    </div>
+    <% if @post.image.present? %>
+    <div class="mb-4">
+        <img src=<%= @post.image %> class="w-80">
+    </div>
+    <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="actions flex justify-center m-8">
+        <%= form.submit "Submit", class: "bg-blue-100 px-8 py-1 rounded-full" %>
+    </div>
+    <% end %>
+
+</div>

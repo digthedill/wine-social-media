@@ -25,7 +25,7 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem 'cloudinary'
-
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 
 
 # Use Active Storage variant

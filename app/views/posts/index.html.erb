@@ -1,35 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div>
+    <h1 class="text-2xl border-b mb-8">Wines to Try:</h1>
 
-<h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="flex flex-col">
+        <% @posts.each do |post| %>
+        <div class="flex items-around w-3/4">
+            <div class="w-1/2">
+                <div>
+                    <p class="font-bold">Name:</p>
+                    <%= post.name %>
+                </div>
+                <div>
+                    <p class="font-bold">Description:</p>
+                    <%= post.description %>
+                </div>
+                <div>
+                    <p class="font-bold">Price:</p>
+                    $<%= post.price %>
+                </div>
+                <div>
+                    <p class="font-bold">Posted on:</p>
+                    <%= post.created_at.to_formatted_s(:short) %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><img src=<%= post.image %> /></td>
-        <td><%= post.name %></td>
-        <td><%= post.description %></td>
-        <td><%= post.price %></td>
-        <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                </div>
+                <div>
+                    <p class="font-bold">Connoisseur:</p>
+                    <%= User.find(post.user_id).username %>
+                    <img src=<%=User.find(post.user_id).avatar.url %> alt=<%= User.find(post.user_id).username %> class="w-12 rounded-full">
+                </div>
 
-<br>
+            </div>
+            <div class="w-1/2">
+                <a href=<%= "/posts/#{post.id}" %>>
+                    <img src=<%= post.image %> class="object-contain h-60 w-full rounded" />
+                </a>
+            </div>
+        </div>
+        <div class="flex justify-center">
+            <hr class="w-1/4 my-4" />
+        </div>
+        <% end %>
 
-<%= link_to 'New Post', new_post_path %>
+    </div>
+
+    <br>
+    <div class="flex justify-center">
+        <%= link_to 'New Post', new_post_path, class: "text-2xl bg-blue-100 px-6 py-1" %>
+    </div>
+</div>

@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "main#index"
 
-#   unauthenticated do
-#     root :to => 'main#index'
-#  end
+  get 'users/:id' => 'users#show'
+  #   unauthenticated do
+  #     root :to => 'main#index'
+  #  end
  
 #  authenticated do
 #    root :to => 'dashboard#index'
