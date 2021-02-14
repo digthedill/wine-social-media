@@ -5,4 +5,20 @@
 
 
     <img src=<%=@user.avatar.url %> alt=<%= @user.username %> class=" w-80 rounded-full">
+
+
+    <hr class="my-8">
+    <h1 class="text-xl"><%= @user.username %>'s wine:</h1>
+
+    <% @user.posts.each do |post|%>
+    <div class="flex-col my-2 border p-8">
+        <a href=<%= "/posts/#{post.id}"%>>
+
+            <h2 class="text-xl font-bold"> <%= post.name %></h2>
+            <p><%= post.description %></p>
+            <img src=<%=post.image %> class="w-60 mt-4">
+        </a>
+    </div>
+
+    <% end %>
 </div>
